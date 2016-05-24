@@ -1,6 +1,6 @@
 'use strict';
 
-app.directive('navbar', function ($state, $location, $rootScope) {
+app.directive('navbar', function ($state, $location, $http) {
   return {
     restrict: 'E',
     templateUrl: '/browser/components/navbar/navbar.html',
@@ -10,12 +10,15 @@ app.directive('navbar', function ($state, $location, $rootScope) {
         var path = $location.path();
         return path.startsWith(partial);
       };
-    },
-    controller: function($scope, $rootScope) {
-      $rootScope.$on('loggedIn', function() {
-        $scope.sessionActive = true;
 
-      })
-    }
+      scope.logout = function() {
+        return $http.delete('/api/login');
+      }
+    },
+    // controller: function($scope, $rootScope) {
+    //   $rootScope.$on('loggedIn', function() {
+    //     $scope.sessionActive = true;
+    //   })
+    // }
   }
 });
