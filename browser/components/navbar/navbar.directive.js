@@ -1,6 +1,6 @@
 'use strict';
 
-app.directive('navbar', function ($state, $location, $http) {
+app.directive('navbar', function ($state, $location, AuthFactory) {
   return {
     restrict: 'E',
     templateUrl: '/browser/components/navbar/navbar.html',
@@ -11,9 +11,8 @@ app.directive('navbar', function ($state, $location, $http) {
         return path.startsWith(partial);
       };
 
-      scope.logout = function() {
-        return $http.delete('/api/login');
-      }
+      scope.logout = AuthFactory.logout;
+      scope.getCurrentUser = AuthFactory.getCurrentUser();
     },
     // controller: function($scope, $rootScope) {
     //   $rootScope.$on('loggedIn', function() {

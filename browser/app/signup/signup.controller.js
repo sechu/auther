@@ -1,14 +1,13 @@
 'use strict';
 
-app.controller('SignupCtrl', function ($scope, Signup, $state) {
+app.controller('SignupCtrl', function ($scope, AuthFactory, $state) {
 
   $scope.createLogin = function() {
   	var login = {
   		email: $scope.loginEmail,
   		password: $scope.loginPassword
   	}
-    Signup.createLogin(login);
-    console.log(login);
+    AuthFactory.signup(login);
     $state.go('stories');
     // $scope.reset(login);
   }

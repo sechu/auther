@@ -28,8 +28,7 @@ router.post('/', function (req, res, next) {
   User.create(req.body)
   .then(function (user) {
     req.session.userId = user.id;
-    console.log('signup router', req.session);
-    res.status(201).json(user);
+    res.json(user);
   })
   .catch(next);
 });
