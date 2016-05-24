@@ -9,10 +9,10 @@ router.post('/', function(req, res, next) {
     if(!user) {
       res.sendStatus(401);
     } else {
-
+      // req.session.cookie.maxAge = 30000;
       req.session.userId = user.id;
-      console.log('login router', req.session);
-      res.sendStatus(204);
+      console.log('login router', user);
+      res.status(204).json(user);
     }
   })
   .catch(next);

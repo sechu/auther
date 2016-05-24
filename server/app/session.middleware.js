@@ -7,17 +7,17 @@ router.use(session({
   secret: 'tongiscool' // or whatever you like
 }));
 
-// place right after the session setup middleware
-router.use(function (req, res, next) {
-  console.log('session', req.session);
-  next();
-});
+// // place right after the session setup middleware
+// router.use(function (req, res, next) {
+//   // console.log('session', req.session);
+//   next();
+// });
 
-router.use('/api', function (req, res, next) {
-  if (!req.session.counter) req.session.counter = 0;
-  console.log('counter', ++req.session.counter);
-  next();
-});
+// // router.use('/api', function (req, res, next) {
+// //   if (!req.session.counter) req.session.counter = 0;
+// //   console.log('counter', ++req.session.counter);
+// //   next();
+// // });
 
 
 module.exports = router;
