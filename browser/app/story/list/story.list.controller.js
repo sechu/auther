@@ -17,7 +17,7 @@ app.controller('StoryListCtrl', function ($scope, stories, Story, users) {
   $scope.addStory = function () {
     $scope.newStory.save()
     .then(function (created) {
-      // created.author = $scope.newStory.author;
+      created.author = $scope.newStory.author;
       $scope.newStory = new Story();
       $scope.stories.unshift(created);
     });
