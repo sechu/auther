@@ -11,7 +11,7 @@
     <ul class="list-group">
       <p class="list-group-item story-item">
         <span
-          contenteditable
+          contenteditable={{currentUser.id==user.id}}
           placeholder="Story Title"
           ng-model="newStory.title">
         </span>

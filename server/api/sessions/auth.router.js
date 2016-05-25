@@ -10,12 +10,32 @@ router.post('/', function(req, res, next) {
     } else {
       // req.session.cookie.maxAge = 30000;
       req.session.userId = user.id;
-      console.log('login router', req.session);
-      res.status(204).json(user);
+      // console.log('login router', req.session);
+      // res.status(204).json(user);
+      // setTimeout(function() {
+        req.session.save(function() {
+          res.json(user);
+        });
+      // }, 300);
+      
     }
   })
   .catch(next);
 });
+
+router.get('/', function(req, res, next) {
+  User.findOne({
+    where: {
+      id: req.session.userId
+    }
+  })
+  .then(function(user) {
+    res.json(user);
+  })
+  .catch(function(error) {
+    res.send('cannot find user');
+  })
+})
 
 router.delete('/', function(req, res, next) {
     req.session.destroy();

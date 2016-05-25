@@ -1,18 +1,16 @@
 'use strict';
 
-app.controller('LoginCtrl', function ($scope, Login, $state, $rootScope) {
+app.controller('LoginCtrl', function ($scope, AuthFactory, $state) {
 
   $scope.submitLogin = function() {
   	var login = {
   		email: $scope.loginEmail,
   		password: $scope.loginPassword
   	}
-    Login.submitLogin(login)
+    AuthFactory.login(login)
     .then(function(user) {
-    	console.log("THIS IS THE RESPONSE", user);
-    	$rootScope.$broadcast('loggedIn', user);
+    	$state.go('home');	
     });
-    $state.go('stories');    
   }
 
 });
