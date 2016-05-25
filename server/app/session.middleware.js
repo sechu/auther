@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var session = require('express-session');
+var passport = require('passport');
 
 router.use(session({
   // this mandatory configuration ensures that session IDs are not predictable
@@ -21,6 +22,9 @@ router.use('/api', function (req, res, next) {
   console.log('session', req.session);
   next();
 });
+
+router.use(passport.initialize());
+router.use(passport.session());
 
 
 module.exports = router;
