@@ -26,5 +26,4 @@ router.use('/api', function (req, res, next) {
 router.use(passport.initialize());
 router.use(passport.session());
 
-
 module.exports = router;

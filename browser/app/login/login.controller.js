@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('LoginCtrl', function ($scope, AuthFactory, $state) {
 
+app.controller('LoginCtrl', function ($scope, AuthFactory, $state) {
   $scope.submitLogin = function() {
   	var login = {
   		email: $scope.loginEmail,

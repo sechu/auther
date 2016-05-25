@@ -1,6 +1,7 @@
 'use strict';
 
-app.controller('UserDetailCtrl', function ($scope, user, Story, $state, $rootScope) {
+
+app.controller('UserDetailCtrl', function ($scope, user, Story, $state, AuthFactory, $rootScope) {
   $scope.user = user;
   $scope.newStory = new Story({author_id: $scope.user.id});
   $scope.addStory = function () {

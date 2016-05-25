@@ -11,7 +11,6 @@ app.controller('SignupCtrl', function ($scope, AuthFactory, $state) {
     .then(function() {
       $state.go('stories');
     });
-    // $scope.reset(login);
   }
 
 });
